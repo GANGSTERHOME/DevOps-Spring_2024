@@ -21,14 +21,18 @@ jobs:
         with:
           node-version: "14"
 
+      - name: Change to Calculator directory
+        run: cd Calculator
+
       - name: Install dependencies
         run: npm install
+        working-directory: BCDV4033/Calculator
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: assets
-          path: BCDV4033/Calculator/dist
+          path: Calculator/dist
 
           # Fetch the secret API key
       - name: Set up API key
@@ -39,6 +43,10 @@ jobs:
 
       - name: Install dependencies
         run: yarn
-
+      - uses: actions/download-artifact@v2
+        with:
+          name: assets
+          path: Calculator/dist
       - name: Run Lint Checks
         run: yarn style
+        working-directory: Calculator
