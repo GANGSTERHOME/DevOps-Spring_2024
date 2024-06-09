@@ -4,30 +4,22 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest 
-    
+    runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
 
-    - name: Change to Calculator directory
-      run: cd BCDV4033/Calculator
+      - name: Install dependencies
+        run: npm install
 
-    - name: Install dependencies
-      run: npm install
-      working-directory: BCDV4033/Calculator
+      - name: Run Jest tests
+        run: npm test
 
-    - name: Run Jest tests
-      run: npm test
-      working-directory: BCDV4033/Calculator
-
-    - name: Archive dist folder
-      uses: actions/upload-artifact@v2
-      with:
-        name: artifacts
-        path: BCDV4033/Calculator/dist
+      - name: Archive dist folder
+        uses: actions/upload-artifact@v2
