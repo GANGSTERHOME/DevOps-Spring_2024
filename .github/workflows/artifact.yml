@@ -16,7 +16,7 @@ jobs:
         node-version: '14'
 
     - name: Change to Calculator directory
-      run: cd LAB1
+      run: cd LAB1/src
 
     - name: Install dependencies
       run: npm install
@@ -24,7 +24,7 @@ jobs:
 
     - name: Run Jest tests
       run: npm test
-      working-directory: LAB1
+      working-directory: LAB1/src
 
     - name: Archive dist folder
       uses: actions/upload-artifact@v2
