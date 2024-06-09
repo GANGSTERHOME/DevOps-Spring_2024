@@ -15,11 +15,19 @@ jobs:
         with:
           node-version: "14"
 
+      - name: Change to Calculator directory
+        run: cd Calculator
+
       - name: Install dependencies
         run: npm install
+        working-directory: Calculator
 
       - name: Run Jest tests
         run: npm test
+        working-directory: Calculator
 
       - name: Archive dist folder
         uses: actions/upload-artifact@v2
+        with:
+          name: artifacts
+          path: Calculator/dist
