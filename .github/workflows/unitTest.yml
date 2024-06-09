@@ -48,5 +48,5 @@ jobs:
           name: assets
           path: Calculator/dist
       - name: Run Lint Checks
-        run: yarn style
+        run: yarn eslint
         working-directory: Calculator
