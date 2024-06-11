@@ -9,8 +9,8 @@ stages{
            '''
       }
 }
-    stages('Test') {
-        steps {
+     stage('Test') {
+         steps {
              echo 'Testing is going on!'
          }
        }
